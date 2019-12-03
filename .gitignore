@@ -1,0 +1,11 @@
+# Compiled object files
+*.obj
+
+# Linker data
+*.ilk
+
+# Symbol files
+*.pdb
+
+# Executables
+*.exe
