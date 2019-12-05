@@ -14,31 +14,6 @@
 
 using namespace std;
 
-struct ListNode;
-
-struct CacheLine {
-    CacheLine ()
-        :
-        key (-1),
-        value (-1),
-        ptr (nullptr)
-        {}
-
-    CacheLine (
-        int _key,
-        int _value,
-        ListNode* _ptr)
-        :
-        key(_key),
-        value(_value),
-        ptr(_ptr)
-        {}
-
-    int key;
-    int value;
-    ListNode* ptr;
-};
-
 struct ListNode 
 {
     ListNode()
@@ -91,6 +66,7 @@ public:
         if (last != nullptr) {
             last->next = ptr;
         }
+
         ptr->prev = last;
         last = ptr;
 
@@ -102,21 +78,17 @@ public:
     }
     
     int get (int key) {
-
         // if not found in the cache, just return -1
         //
         auto got = map.find(key);
 
-        if (got == map.end())
-        {
+        if (got == map.end()) {
             return -1;
         }
 
-        CacheLine cacheLine = got->second;
-        int result = cacheLine.value;
+        ListNode* ptr = got->second;
+        int result = ptr->value;
 
-        ListNode* ptr = cacheLine.ptr;
-        
         // Move the current element to the end of the list.
         //
         if (ptr == last) {
@@ -133,12 +105,12 @@ public:
         auto got = map.find(key);
 
         if (got != map.end()) {
-            CacheLine cacheLine = got->second;
+            ListNode* ptr = got->second;
 
-            map[key] = CacheLine(key, value, cacheLine.ptr);
+            ptr->value = value;
 
-            if (cacheLine.ptr != last) {
-                moveLast(cacheLine.ptr);
+            if (ptr != last) {
+                moveLast(ptr);
             }
 
             return;
@@ -156,8 +128,8 @@ public:
 
             head = head->next;
 
-            CacheLine cacheLine = map[firstKey];
-            delete cacheLine.ptr;
+            ListNode* ptr = map[firstKey];
+            delete ptr;
 
             if (cap == 1) {
                 head = nullptr;
@@ -183,8 +155,7 @@ public:
             head = last;
         }
 
-        CacheLine newCacheLine(key, value, last);
-        map.insert(pair<int, CacheLine>(key, newCacheLine));
+        map.insert(pair<int, ListNode*>(key, last));
 
         if (cnt < cap) {
             cnt++;
@@ -194,7 +165,7 @@ public:
 private:
     int cap;
     int cnt;
-    unordered_map<int, CacheLine> map;
+    unordered_map<int, ListNode*> map;
     ListNode* head;
     ListNode* last;
 };
