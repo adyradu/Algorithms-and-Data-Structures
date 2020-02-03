@@ -5,12 +5,22 @@
 
 using namespace std;
 
+// Class representing a mean heap on integer values.
+//
 class MinHeapInt
 {
 public:
+
+    // Default constructor
+    //
     MinHeapInt()
     {}
 
+    // It constructs a heap from an array.
+    // It copies first the array into the heap's container
+    // and then it calls progessively bubbleDown from the end
+    // of the container to the beginning of the container.
+    //
     MinHeapInt(vector<int> a)
         :
         container(vector<int>(a.size()))
@@ -24,6 +34,10 @@ public:
         }
     }
 
+    // It sorts the array throgh a heap data structure.
+    // It constructs a heap and then repopulates the array
+    // by getting the minimum from the heap.
+    //
     static void heapsort(vector<int>& a) {
         MinHeapInt minHeap(a);
 
@@ -84,12 +98,19 @@ private:
             leftChildPos : rightChildPos;
     }
 
+    // Given a position curPos it places the element at curPos
+    // in the heap so that it satifies the heap properties.
+    // The assumption is that all elements between curPos and
+    // and the end of the container represent a valid heap.
+    //
     void bubbleDown(int curPos);
 
 private:
     vector<int> container;
 };
 
+// Inserts a new value into the heap.
+//
 void
 MinHeapInt::insert(int val)
 {
@@ -108,6 +129,8 @@ MinHeapInt::insert(int val)
     }
 }
 
+// Returns the minimum value from the heap.
+//
 int
 MinHeapInt::getMin() const
 {
@@ -118,6 +141,11 @@ MinHeapInt::getMin() const
     return container[0];
 }
 
+// Given a position curPos it places the element at curPos
+// in the heap so that it satifies the heap properties.
+// The assumption is that all elements between curPos and
+// and the end of the container represent a valid heap.
+//
 void
 MinHeapInt::bubbleDown(int curPos)
 {
@@ -132,6 +160,8 @@ MinHeapInt::bubbleDown(int curPos)
     }    
 }
 
+// Deletes the minimum value from the heap.
+// 
 void MinHeapInt::deleteMin()
 {
     if (container.size() == 0) {
@@ -144,6 +174,8 @@ void MinHeapInt::deleteMin()
     bubbleDown(0);
 }
 
+// Returns whether the container is a heap or not.
+// 
 bool
 MinHeapInt::isHeap() const
 {
