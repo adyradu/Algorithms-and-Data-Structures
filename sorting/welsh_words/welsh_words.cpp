@@ -23,7 +23,13 @@ bool compare(const string& a, const string& b)
         if (posA + 1 < a.size() &&
             combinations.find(ca) != combinations.end() &&
             a[posA + 1] == combinations[ca]) {
-            orderA = 2 * ca + 1;
+            if (ca == 'n') {
+                orderA = 2 * combinations[ca] + 1;
+            }
+            else {
+                orderA = 2 * ca + 1;
+            }
+            
             posA += 2;
         }
         else {
@@ -34,7 +40,12 @@ bool compare(const string& a, const string& b)
         if (posB + 1 < b.size() &&
             combinations.find(cb) != combinations.end() &&
             b[posB + 1] == combinations[cb]) {
-            orderB = 2 * cb + 1;
+            if (cb == 'n') {
+                orderB = 2 * combinations[cb] + 1;
+            }
+            else {
+                orderB = 2 * cb + 1;
+            }
             posB += 2;
         }
         else {
