@@ -31,10 +31,7 @@ bool isMirrorHelper(BTNode* root1, BTNode* root2)
     {
         return true;
     }
-    else if (root1 == nullptr) {
-        return false;
-    }
-    else if (root2 == nullptr) {
+    else if (root1 == nullptr || root2 == nullptr) {
         return false;
     }
 
@@ -75,6 +72,6 @@ int main(void)
     BTNode* node6 = new BTNode(3);
     node4->left = node5; node4->right = node6;
     cout<<isMirror(node4)<<endl;
-    
+
     return 0;
 }
