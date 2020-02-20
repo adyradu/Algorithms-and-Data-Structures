@@ -10,7 +10,7 @@
 
 using namespace std;
 
-vector<char> colors = {'r', 'w', 'b'};
+vector<char> colors = {'r', 'w'};
 
 void sortRWBArray(vector<char>& a)
 {
