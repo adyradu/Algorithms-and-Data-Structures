@@ -1,6 +1,8 @@
-// Select the second larges element in an unsorted array.
+// Select the second largest element in an unsorted array.
 // The largest and the second largest elements are not duplicate.
-// Find an algorithm using less than 2n-3 comparisons
+// Find an algorithm using less than 2n-3 comparisons.
+// The solution finds the second largest element in O(n+log(n))
+// comparisons using a tournament tree.
 //
 #include <iostream>
 #include <queue>
