@@ -74,7 +74,6 @@ int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
         
         for (string w : nextWords) {           
             if (visited_down.find(w) != visited_down.end()) {
-                cout<<w<<" "<<nextLevelUp<<" "<<visited_down[w]<<endl;
                 int dist = nextLevelUp + visited_down[w] - 1;
                 
                 if (dist < minUpFound) {
@@ -110,7 +109,6 @@ int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
         for (string w : nextWords) {
             
             if (visited_up.find(w) != visited_up.end()) {
-                //cout<<nextLevelDown<<" "<<visited_up[w]<<endl;
                 int dist = nextLevelDown + visited_up[w] - 1;
                 if (dist < minDownFound) {
                     minDownFound = dist;
