@@ -40,7 +40,7 @@ TreeNode* constr(vector<int>& pre, int preLow, int preHigh, vector<int>& post, i
     L = pos - postLow + 1;
     
     root->left = constr(pre, preNext, preLow + L, post, postLow, postLow + L - 1);
-    root->right = constr(pre, preLow + L + 1, preHigh, post, L + 1, postHigh - 1);
+    root->right = constr(pre, preLow + L + 1, preHigh, post, postLow + L, postHigh - 1);
     
     return root;
 }
