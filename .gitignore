@@ -9,3 +9,17 @@
 
 # Executables
 *.exe
+
+*.tlog
+
+*.recipe
+
+*.log
+
+*.vcxproj.FileListAbsolute.txt
+
+*.idb
+
+*.lastbuildstate
+
+*.opendb
