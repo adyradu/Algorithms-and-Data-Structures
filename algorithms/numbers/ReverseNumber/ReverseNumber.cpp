@@ -8,17 +8,20 @@
 long long reverse(int x)
 {
     long long res = 0;
-    while (x)
+    int aux = x;
+    aux = aux < 0 ? -aux : aux;
+
+    while (aux)
     {
-        res = res * 10 + (x % 10);
-        x /= 10;
+        res = res * 10 + (aux % 10);
+        aux /= 10;
     }
 
-    return res;
+    return x < 0 ? -res : res;
 }
 
 int main()
 {
-    std::cout << reverse(3478192);
+    std::cout << reverse(-34);
     return 0;
 }
