@@ -10,7 +10,7 @@ struct Line
 	int a, b;
 };
 
-bool IntersectLine(Line l1, Line l2, Line& res)
+bool intersect_line(Line l1, Line l2, Line& res)
 {
     if (l1.b < l2.a ||
         l2.b < l1.a)
@@ -37,16 +37,16 @@ bool IntersectLine(Line l1, Line l2, Line& res)
 /// <param name="r2"></param>
 /// <param name="result"></param>
 /// <returns></returns>
-bool IntersectRectangle(const Rect& r1, const Rect& r2, Rect result) {
+bool intersect_rectangle(const Rect& r1, const Rect& r2, Rect result) {
     Rect result = { 0, 0, -1, -1 };
     Line intersectX = { 0, 0 };
-    if (!IntersectLine({ r1.x, r1.x + r1.width }, { r2.x, r2.x + r2.width }, intersectX))
+    if (!intersect_line({ r1.x, r1.x + r1.width }, { r2.x, r2.x + r2.width }, intersectX))
     {
         return false;
     }
 
     Line intersectY = { 0, 0 };
-    if (!IntersectLine({ r1.y, r1.y + r1.height }, { r2.y, r2.y + r2.height }, intersectY))
+    if (!intersect_line({ r1.y, r1.y + r1.height }, { r2.y, r2.y + r2.height }, intersectY))
     {
         return false;
     }
