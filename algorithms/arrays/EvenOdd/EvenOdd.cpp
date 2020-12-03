@@ -3,7 +3,7 @@
 
 /// <summary>
 /// Arrange the elements of an array so that all even elements come first.
-/// Expected space complexity is O(1).
+/// Expected space complexity is O(1). Time complexity is O(n)
 /// </summary>
 /// <param name="v"></param>
 void even_odd(std::vector<int>& v)
