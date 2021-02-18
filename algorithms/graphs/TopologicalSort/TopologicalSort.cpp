@@ -59,10 +59,9 @@ vector<T> TopologicalSort(const Graph<T>& g)
 	unordered_set<T> visited;
 	vector<T> result;
 
-	//for (GraphVertex<T> v : g.vertices)
-	for (int i = g.vertices.size() - 1; i >= 0; --i)
+	for (GraphVertex<T> v : g.vertices)
 	{
-		TopologicalSortHelper(&(g.vertices[i]), st, visited);
+		TopologicalSortHelper(&v, st, visited);
 	}
 
 	while (!empty(st))
